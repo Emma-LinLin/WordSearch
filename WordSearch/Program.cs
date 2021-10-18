@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WordSearch
 {
@@ -6,7 +7,8 @@ namespace WordSearch
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("hej");
+            MenuHandler MenuPointer = new MenuHandler();
+            MenuPointer.Menu();
         }
     }
 }
