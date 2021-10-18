@@ -2,18 +2,32 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
     using System.Text;
     using WordSearch.DocumentHandler;
 
     internal class MenuHandler
     {
-        private string _cowFile = @"D:\Utbildning\Datalogi\Testning\BinaryTreeTest\cow.txt";
-        private string _chickenFile = @"D:\Utbildning\Datalogi\Testning\BinaryTreeTest\Chicken.txt";
-        private string _sheepFile = @"D:\Utbildning\Datalogi\Testning\BinaryTreeTest\Sheep.txt";
+        private string _cowPath = @"\cow.txt";
+        private string _chickenPath = @"\Chicken.txt";
+        private string _sheepPath = @"\Sheep.txt";
 
         public void Menu()
         {
             Console.WriteLine("Welcome!");
+            //Fetch(_cowFile);
+
+            string path = GetPath(_cowPath);
+            Fetch(path);
+        }
+
+        private string GetPath(string fileName)
+        {
+            string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string path = $"{dir}{fileName}";
+
+            return path;
         }
 
         private static void Fetch(string filePath)
