@@ -6,40 +6,24 @@
     using System.Reflection;
     using System.Text;
     using WordSearch.DocumentHandler;
+    using WordSearch.Seeder;
 
     internal class MenuHandler
     {
+        private List<string> cowList = default;
+        private List<string> chickenList = default;
+        private List<string> sheepList = default;
         private string _cowPath = @"\cow.txt";
         private string _chickenPath = @"\Chicken.txt";
         private string _sheepPath = @"\Sheep.txt";
 
         public void Menu()
         {
+            ListSeeder seederPointer = new ListSeeder();
+            cowList = seederPointer.Seeder(_cowPath);
+            chickenList = seederPointer.Seeder(_chickenPath);
+            sheepList = seederPointer.Seeder(_sheepPath);
             Console.WriteLine("Welcome!");
-            //Fetch(_cowFile);
-
-            string path = GetPath(_cowPath);
-            Fetch(path);
-        }
-
-        private string GetPath(string fileName)
-        {
-            string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            string path = $"{dir}{fileName}";
-
-            return path;
-        }
-
-        private static void Fetch(string filePath)
-        {
-            FileReader testing = new FileReader();
-            string test = testing.ReadFile(filePath);
-            List<string> testing2 = testing.SplitLine(test);
-
-            foreach (var item in testing2)
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }

@@ -7,7 +7,6 @@
 
     internal class FileReader
     {
-        //@"D:\Utbildning\Datalogi\Testning\BinaryTreeTest\cow.txt"
         public string ReadFile(string path)
         {
             string fileString = File.ReadAllText(path);
