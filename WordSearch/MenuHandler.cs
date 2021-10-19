@@ -10,8 +10,14 @@
     using WordSearch.SearchHandlers;
     using WordSearch.Seeder;
 
+    /// <summary>
+    /// Starts the menu system
+    /// </summary>
     internal class MenuHandler
     {
+        /// <summary>
+        /// Global variables containing lists and paths
+        /// </summary>
         private List<string> cowList = default;
         private List<string> chickenList = default;
         private List<string> sheepList = default;
@@ -22,6 +28,9 @@
         private InputHandler helperPointer = new InputHandler();
         private SearchHandler searchPointer = new SearchHandler();
 
+        /// <summary>
+        /// Main menu presented to user when program is started
+        /// </summary>
         public void Menu()
         {
             Seed();
@@ -58,6 +67,9 @@
             }
         }
 
+        /// <summary>
+        /// User can decide what document and number of words they would like to see
+        /// </summary>
         private void ListChoice()
         {
             List<string> sortedList = new List<string>();
@@ -86,9 +98,12 @@
 
             Console.WriteLine("And how many words would you like to print?");
             userInput = helperPointer.ParseUserInput();
-            searchPointer.WordCount(userInput, sortedList);
+            searchPointer.PrintNumberOfWords(userInput, sortedList);
         }
 
+        /// <summary>
+        /// Calls upon seeder forwarding the paths wanted
+        /// </summary>
         private void Seed()
         {
             ListSeeder seederPointer = new ListSeeder();

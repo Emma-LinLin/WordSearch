@@ -5,8 +5,16 @@
     using System.Text;
     using System.Linq;
 
+    /// <summary>
+    /// Class for handeling requests from user
+    /// </summary>
     internal class SearchHandler
     {
+        /// <summary>
+        /// Sorts incoming list in alphabetical order
+        /// </summary>
+        /// <param name="unOrdered">un sorted list</param>
+        /// <returns>sorted list</returns>
         public List<string> SortList(List<string> unOrdered)
         {
             unOrdered.Sort();
@@ -14,7 +22,12 @@
             return sortedList;
         }
 
-        public void WordCount(int userInput, List<string> sortedList)
+        /// <summary>
+        /// Prints the number of words chosed by the user from the relevant list containing txt document 
+        /// </summary>
+        /// <param name="userInput">number of words</param>
+        /// <param name="sortedList">list sorted in alpabethical order</param>
+        public void PrintNumberOfWords(int userInput, List<string> sortedList)
         {
             for (int i = 0; i < userInput; i++)
             {
