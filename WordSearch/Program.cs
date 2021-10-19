@@ -6,7 +6,10 @@ namespace WordSearch
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        /// <summary>
+        /// Entry point for program
+        /// </summary>
+        private static void Main()
         {
             MenuHandler MenuPointer = new MenuHandler();
             MenuPointer.Menu();
