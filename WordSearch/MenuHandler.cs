@@ -5,6 +5,7 @@
     using System.IO;
     using System.Reflection;
     using System.Text;
+    using WordSearch.Datastructure;
     using WordSearch.DocumentHandler;
     using WordSearch.Helpers;
     using WordSearch.SearchHandlers;
@@ -47,7 +48,7 @@
                 switch (userInput)
                 {
                     case 1:
-
+                        SearchWord();
                         break;
 
                     case 2:
@@ -65,6 +66,58 @@
                         break;
                 }
             }
+        }
+
+        private void SearchWord()
+        {
+            BinaryTree binaryTree = new BinaryTree();
+
+            int counter = default;
+            string document = default;
+            Console.WriteLine("What word would you like to search for?");
+            string userInput = Console.ReadLine();
+
+            var listOfDocuments = new List<List<string>>()
+            {
+                cowList,
+                chickenList,
+                sheepList,
+            };
+
+            foreach(var list in listOfDocuments)
+            {
+                if (list.Contains(userInput))
+                {
+                    if(list == cowList)
+                    {
+                        document = "cow.txt";
+                    }
+                    if (list == chickenList)
+                    {
+                        document = "chicken.txt";
+                    }
+                    if (list == sheepList)
+                    {
+                        document = "sheep.txt";
+                    }
+                    foreach (var item in list)
+                    {
+                        if (item == userInput)
+                        {
+                            counter++;
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine($"we found {counter} matches in {document} to your search word\nWould you like to save the output?");
+            Console.WriteLine("[Y] for yes, [N] for no");
+            var userChoice = Console.ReadLine().ToLower();
+            if(userChoice == "y")
+            {
+                binaryTree.Insert(counter, userInput, document);
+            }
+
         }
 
         /// <summary>

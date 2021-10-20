@@ -17,7 +17,7 @@
         /// <returns>string with the content of the txt file</returns>
         public string ReadFile(string path)
         {
-            string fileString = File.ReadAllText(path);
+            string fileString = File.ReadAllText(path).ToLower();
 
             return fileString;
         }
