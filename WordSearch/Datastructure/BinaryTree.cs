@@ -21,5 +21,13 @@
                 root = new TreeNode(value, searchWord, searchFileName);
             }
         }
+
+        public void PrintTree()
+        {
+            if (root != null)
+            {
+                root.PrintTree();
+            }
+        }
     }
 }

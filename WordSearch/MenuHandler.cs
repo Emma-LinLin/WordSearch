@@ -20,9 +20,10 @@
         /// Global variables containing lists and paths
         /// </summary>
         private List<string> cowList = default;
+
         private List<string> chickenList = default;
         private List<string> sheepList = default;
-
+        private BinaryTree binaryTree = new BinaryTree();
         private string _cowPath = @"\cow.txt";
         private string _chickenPath = @"\Chicken.txt";
         private string _sheepPath = @"\Sheep.txt";
@@ -56,6 +57,7 @@
                         break;
 
                     case 3:
+                        PrintStructure();
                         break;
 
                     case 4:
@@ -70,8 +72,6 @@
 
         private void SearchWord()
         {
-            BinaryTree binaryTree = new BinaryTree();
-
             int counter = default;
             string document = default;
             Console.WriteLine("What word would you like to search for?");
@@ -84,11 +84,11 @@
                 sheepList,
             };
 
-            foreach(var list in listOfDocuments)
+            foreach (var list in listOfDocuments)
             {
                 if (list.Contains(userInput))
                 {
-                    if(list == cowList)
+                    if (list == cowList)
                     {
                         document = "cow.txt";
                     }
@@ -113,11 +113,10 @@
             Console.WriteLine($"we found {counter} matches in {document} to your search word\nWould you like to save the output?");
             Console.WriteLine("[Y] for yes, [N] for no");
             var userChoice = Console.ReadLine().ToLower();
-            if(userChoice == "y")
+            if (userChoice == "y")
             {
                 binaryTree.Insert(counter, userInput, document);
             }
-
         }
 
         /// <summary>
@@ -152,6 +151,11 @@
             Console.WriteLine("And how many words would you like to print?");
             userInput = helperPointer.ParseUserInput();
             searchPointer.PrintNumberOfWords(userInput, sortedList);
+        }
+
+        public void PrintStructure()
+        {
+            binaryTree.PrintTree();
         }
 
         /// <summary>

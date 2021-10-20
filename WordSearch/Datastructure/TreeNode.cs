@@ -52,5 +52,19 @@
                 }
             }
         }
+
+        public void PrintTree()
+        {
+            Console.WriteLine($"Filename: {fileName}. Word: {word}. Amount of times in document: {data}");
+
+            if (leftNode != null)
+            {
+                leftNode.PrintTree();
+            }
+            if (rightNode != null)
+            {
+                rightNode.PrintTree();
+            }
+        }
     }
 }
