@@ -113,7 +113,7 @@
         /// <param name="userInput">User input</param>
         /// <param name="document">Name of file</param>
         /// <param name="wordList">Document list containing words from read file.</param>
-        public void WordRepeatCheck(string userInput, string document, List<string> wordList)
+        public int WordRepeatCheck(string userInput, string document, List<string> wordList)
         {
             int counter = default;
 
@@ -125,6 +125,7 @@
                 }
             }
             documentContPointer.AddItemToList(document, userInput, counter);
+            return counter;
         }
 
         /// <summary>
@@ -133,6 +134,8 @@
         /// <param name="userInput">User input</param>
         public bool ListCheck(string userInput)
         {
+            int counter = default;
+
             var listOfDocuments = new List<List<string>>()
             {
                 cowList,
@@ -148,26 +151,25 @@
                     if (list == cowList)
                     {
                         document = "cow.txt";
-                        WordRepeatCheck(userInput, document, list);
+                        counter += WordRepeatCheck(userInput, document, list);
                     }
                     if (list == chickenList)
                     {
                         document = "Chicken.txt";
-                        WordRepeatCheck(userInput, document, list);
+                         counter += WordRepeatCheck(userInput, document, list);
                     }
                     if (list == sheepList)
                     {
                         document = "Sheep.txt";
-                        WordRepeatCheck(userInput, document, list);
+                        counter += WordRepeatCheck(userInput, document, list);
                     }
-                }
-                else
-                {
-                    Console.WriteLine("\nSearch word does not exist.\n");
-                    return false;
                 }
             }
 
+            if(counter == 0)
+            {
+                return false;
+            }
             return true;
         }
 
