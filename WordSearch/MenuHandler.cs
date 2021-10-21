@@ -29,6 +29,7 @@
         private string _sheepPath = @"\Sheep.txt";
         private InputHandler helperPointer = new InputHandler();
         private SearchHandler searchPointer = new SearchHandler();
+        private DocumentController documentContPointer = new DocumentController();
 
         /// <summary>
         /// Main menu presented to user when program is started
@@ -70,13 +71,61 @@
             }
         }
 
+        /// <summary>
+        /// Search for word based on user input through all document lists.
+        /// </summary>
         private void SearchWord()
         {
-            int counter = default;
-            string document = default;
             Console.WriteLine("What word would you like to search for?");
             string userInput = Console.ReadLine();
 
+            ListCheck(userInput);
+
+            var listsWithWord = documentContPointer.GetList();
+
+            foreach (var list in listsWithWord)
+            {
+                Console.WriteLine($"we found {list.Repeats} matches in {list.FileName} to your search word\n");
+            }
+            Console.WriteLine("Would you like to save the output to the datastructure");
+            Console.WriteLine("[Y] for yes, [N] for no");
+            var userChoice = Console.ReadLine().ToLower();
+            if (userChoice == "y")
+            {
+                foreach (var list in listsWithWord)
+                {
+                    binaryTree.Insert(list.Repeats, list.SearchWord, list.FileName);
+                }
+            }
+            documentContPointer.ClearList();
+        }
+
+        /// <summary>
+        /// Check how many times the word searched for occures inside document.
+        /// </summary>
+        /// <param name="userInput">User input</param>
+        /// <param name="document">Name of file</param>
+        /// <param name="wordList">Document list containing words from read file.</param>
+        public void WordRepeatCheck(string userInput, string document, List<string> wordList)
+        {
+            int counter = default;
+
+            foreach (var item in wordList)
+            {
+                if (item == userInput)
+                {
+                    counter++;
+                }
+            }
+            documentContPointer.AddItemToList(document, userInput, counter);
+        }
+
+        /// <summary>
+        /// Check if word exists in one or more of the text files.
+        /// </summary>
+        /// <param name="userInput">User input</param>
+        public void ListCheck(string userInput)
+        {
             var listOfDocuments = new List<List<string>>()
             {
                 cowList,
@@ -88,39 +137,28 @@
             {
                 if (list.Contains(userInput))
                 {
+                    string document = default;
                     if (list == cowList)
                     {
                         document = "cow.txt";
+                        WordRepeatCheck(userInput, document, list);
                     }
                     if (list == chickenList)
                     {
-                        document = "chicken.txt";
+                        document = "Chicken.txt";
+                        WordRepeatCheck(userInput, document, list);
                     }
                     if (list == sheepList)
                     {
-                        document = "sheep.txt";
-                    }
-                    foreach (var item in list)
-                    {
-                        if (item == userInput)
-                        {
-                            counter++;
-                        }
+                        document = "Sheep.txt";
+                        WordRepeatCheck(userInput, document, list);
                     }
                 }
-            }
-
-            Console.WriteLine($"we found {counter} matches in {document} to your search word\nWould you like to save the output?");
-            Console.WriteLine("[Y] for yes, [N] for no");
-            var userChoice = Console.ReadLine().ToLower();
-            if (userChoice == "y")
-            {
-                binaryTree.Insert(counter, userInput, document);
             }
         }
 
         /// <summary>
-        /// User can decide what document and number of words they would like to see
+        /// User can decide what document and number of words they would like to see.
         /// </summary>
         private void ListChoice()
         {
@@ -153,13 +191,16 @@
             searchPointer.PrintNumberOfWords(userInput, sortedList);
         }
 
+        /// <summary>
+        /// Calls upon method for printing datastructure.
+        /// </summary>
         public void PrintStructure()
         {
             binaryTree.PrintTree();
         }
 
         /// <summary>
-        /// Calls upon seeder forwarding the paths wanted
+        /// Calls upon seeder forwarding the paths wanted.
         /// </summary>
         private void Seed()
         {

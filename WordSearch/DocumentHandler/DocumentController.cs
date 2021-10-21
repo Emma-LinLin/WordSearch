@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     internal class DocumentController
     {
@@ -16,6 +17,14 @@
         public List<Document> GetList()
         {
             return ListOfDocuments;
+        }
+
+        /// <summary>
+        /// Clear list from used content in order to make it ready for next search.
+        /// </summary>
+        public void ClearList()
+        {
+            ListOfDocuments.Clear();
         }
     }
 }
