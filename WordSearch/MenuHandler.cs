@@ -46,6 +46,7 @@
                 Console.WriteLine("2. Order document and search for x number of words");
                 Console.WriteLine("3. Print datastructure");
                 Console.WriteLine("4. Exit\n");
+                Console.Write("> ");
                 int userInput = helperPointer.ParseUserInput();
                 switch (userInput)
                 {
@@ -78,26 +79,32 @@
         {
             Console.WriteLine("What word would you like to search for?");
             string userInput = Console.ReadLine();
-
-            ListCheck(userInput);
-
-            var listsWithWord = documentContPointer.GetList();
-
-            foreach (var list in listsWithWord)
+            if (userInput != string.Empty)
             {
-                Console.WriteLine($"we found {list.Repeats} matches in {list.FileName} to your search word\n");
-            }
-            Console.WriteLine("Would you like to save the output to the datastructure");
-            Console.WriteLine("[Y] for yes, [N] for no");
-            var userChoice = Console.ReadLine().ToLower();
-            if (userChoice == "y")
-            {
-                foreach (var list in listsWithWord)
+                var response = ListCheck(userInput);
+
+                if (response)
                 {
-                    binaryTree.Insert(list.Repeats, list.SearchWord, list.FileName);
+                    var listsWithWord = documentContPointer.GetList();
+
+                    foreach (var list in listsWithWord)
+                    {
+                        Console.WriteLine($"we found {list.Repeats} matches in {list.FileName} to your search word\n");
+                    }
+                    Console.WriteLine("Would you like to save the output to the datastructure");
+                    Console.WriteLine("[Y] for yes, [N] for no\n");
+                    Console.Write("> ");
+                    var userChoice = Console.ReadLine().ToLower();
+                    if (userChoice == "y")
+                    {
+                        foreach (var list in listsWithWord)
+                        {
+                            binaryTree.Insert(list.Repeats, list.SearchWord, list.FileName);
+                        }
+                    }
+                    documentContPointer.ClearList();
                 }
             }
-            documentContPointer.ClearList();
         }
 
         /// <summary>
@@ -124,7 +131,7 @@
         /// Check if word exists in one or more of the text files.
         /// </summary>
         /// <param name="userInput">User input</param>
-        public void ListCheck(string userInput)
+        public bool ListCheck(string userInput)
         {
             var listOfDocuments = new List<List<string>>()
             {
@@ -154,7 +161,14 @@
                         WordRepeatCheck(userInput, document, list);
                     }
                 }
+                else
+                {
+                    Console.WriteLine("\nSearch word does not exist.\n");
+                    return false;
+                }
             }
+
+            return true;
         }
 
         /// <summary>
@@ -165,6 +179,7 @@
             List<string> sortedList = new List<string>();
             Console.WriteLine("What document would you like to search?");
             Console.WriteLine("1. cow.txt\n2. Chicken.txt\n3. Sheep.txt ");
+            Console.Write("> ");
             int userInput = helperPointer.ParseUserInput();
 
             switch (userInput)
