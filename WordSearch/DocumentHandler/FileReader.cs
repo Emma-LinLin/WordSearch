@@ -41,6 +41,11 @@
             return wordList;
         }
 
+        /// <summary>
+        /// Remove all symbols that's not letter or digits
+        /// </summary>
+        /// <param name="documentText">text from file</param>
+        /// <returns>cleaned document text without symbols</returns>
         public string RemoveSymbols(string documentText)
         {
             var wordArr = documentText.ToCharArray();

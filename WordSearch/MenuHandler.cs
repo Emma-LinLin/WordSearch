@@ -25,12 +25,12 @@
         private List<string> chickenList = default;
         private List<string> sheepList = default;
         private BinaryTree binaryTree = new BinaryTree();
-        private string _cowPath = @"\cow.txt";
+        private string _cowPath = @"\Cow.txt";
         private string _chickenPath = @"\Chicken.txt";
         private string _sheepPath = @"\Sheep.txt";
         private InputHandler helperPointer = new InputHandler();
         private SearchHandler searchPointer = new SearchHandler();
-        private DocumentController documentContPointer = new DocumentController();
+        private ResultController resultContPointer = new ResultController();
 
         /// <summary>
         /// Main menu presented to user when program is started
@@ -88,7 +88,7 @@
 
                 if (response)
                 {
-                    var listsWithWord = documentContPointer.GetList();
+                    var listsWithWord = resultContPointer.GetList();
 
                     foreach (var list in listsWithWord)
                     {
@@ -105,10 +105,10 @@
                         {
                             binaryTree.Insert(list.Repeats, list.SearchWord, list.FileName);
                         }
+                        resultContPointer.ClearList();
+                        Console.WriteLine("The output was saved");
+                        Thread.Sleep(500);
                     }
-                    documentContPointer.ClearList();
-                    Console.WriteLine("The output was saved");
-                    Thread.Sleep(700);
                 }
             }
             Console.Clear();
@@ -131,7 +131,7 @@
                     counter++;
                 }
             }
-            documentContPointer.AddItemToList(document, userInput, counter);
+            resultContPointer.AddItemToList(document, userInput, counter);
             return counter;
         }
 
@@ -157,7 +157,7 @@
                     string document = default;
                     if (list == cowList)
                     {
-                        document = "cow.txt";
+                        document = "Cow.txt";
                         counter += WordRepeatCheck(userInput, document, list);
                     }
                     if (list == chickenList)

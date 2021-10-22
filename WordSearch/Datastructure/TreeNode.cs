@@ -4,22 +4,36 @@
     using System.Collections.Generic;
     using System.Text;
 
+    /// <summary>
+    /// Node class responsible for insert and print data structure
+    /// </summary>
     internal class TreeNode
     {
+        //The number of repeats in current node
         public int data { get; set; }
 
+        //Search word of current node
         public string word { get; set; }
 
+        //Filename for current node
         public string fileName { get; set; }
 
+        //The node to the right from current node(higher)
         public TreeNode rightNode { get; set; }
 
+        //The node to the left of current node(lower)
         public TreeNode leftNode { get; set; }
 
         public TreeNode()
         {
         }
 
+        /// <summary>
+        /// Constructor for new tree node
+        /// </summary>
+        /// <param name="value">repeats</param>
+        /// <param name="searchWord">search word</param>
+        /// <param name="searchFileName">file name</param>
         public TreeNode(int value, string searchWord, string searchFileName)
         {
             data = value;
@@ -27,6 +41,12 @@
             fileName = searchFileName;
         }
 
+        /// <summary>
+        /// Inserts a new node if the node is not null recursively, if the node is null a new node will be created
+        /// </summary>
+        /// <param name="value">repeats</param>
+        /// <param name="searchWord">search word</param>
+        /// <param name="searchFileName">file name</param>
         public void Insert(int value, string searchWord, string searchFileName)
         {
             if (value >= data)
@@ -53,6 +73,9 @@
             }
         }
 
+        /// <summary>
+        /// Prints the whole data structure recursively
+        /// </summary>
         public void PrintTree()
         {
             Console.WriteLine($"Filename: {fileName}. Word: {word}. Amount of times in document: {data}");
