@@ -40,5 +40,25 @@
 
             return wordList;
         }
+
+        public string RemoveSymbols(string documentText)
+        {
+            var wordArr = documentText.ToCharArray();
+
+            for (int i = 0; i < wordArr.Length; i++)
+            {
+                if (Char.IsLetterOrDigit(wordArr[i]))
+                {
+                    continue;
+                }
+                else
+                {
+                    wordArr[i] = ' ';
+                }
+            }
+            string cleanedDocument = new string(wordArr);
+
+            return cleanedDocument;
+        }
     }
 }

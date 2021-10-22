@@ -5,6 +5,7 @@
     using System.IO;
     using System.Reflection;
     using System.Text;
+    using System.Threading;
     using WordSearch.Datastructure;
     using WordSearch.DocumentHandler;
     using WordSearch.Helpers;
@@ -37,7 +38,7 @@
         public void Menu()
         {
             Seed();
-            Console.WriteLine("Welcome!");
+            Console.WriteLine("Welcome to WordSearch, the word search engine!\n");
 
             while (true)
             {
@@ -77,7 +78,9 @@
         /// </summary>
         private void SearchWord()
         {
-            Console.WriteLine("What word would you like to search for?");
+            Console.Clear();
+            Console.WriteLine("What word would you like to search for?\n");
+            Console.Write("> ");
             string userInput = Console.ReadLine();
             if (userInput != string.Empty)
             {
@@ -89,12 +92,13 @@
 
                     foreach (var list in listsWithWord)
                     {
-                        Console.WriteLine($"we found {list.Repeats} matches in {list.FileName} to your search word\n");
+                        Console.WriteLine($"\nWe found {list.Repeats} matches in {list.FileName}\n");
                     }
-                    Console.WriteLine("Would you like to save the output to the datastructure");
+                    Console.WriteLine("Would you like to save the output to the datastructure?\n");
                     Console.WriteLine("[Y] for yes, [N] for no\n");
                     Console.Write("> ");
                     var userChoice = Console.ReadLine().ToLower();
+                    Console.WriteLine(" ");
                     if (userChoice == "y")
                     {
                         foreach (var list in listsWithWord)
@@ -103,8 +107,11 @@
                         }
                     }
                     documentContPointer.ClearList();
+                    Console.WriteLine("The output was saved");
+                    Thread.Sleep(700);
                 }
             }
+            Console.Clear();
         }
 
         /// <summary>
@@ -156,7 +163,7 @@
                     if (list == chickenList)
                     {
                         document = "Chicken.txt";
-                         counter += WordRepeatCheck(userInput, document, list);
+                        counter += WordRepeatCheck(userInput, document, list);
                     }
                     if (list == sheepList)
                     {
@@ -166,8 +173,9 @@
                 }
             }
 
-            if(counter == 0)
+            if (counter == 0)
             {
+                Console.WriteLine($"No match dound for {userInput} inside the files\n");
                 return false;
             }
             return true;

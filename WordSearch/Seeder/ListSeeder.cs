@@ -42,8 +42,9 @@
         private static List<string> Fetch(string filePath)
         {
             FileReader fileReaderPointer = new FileReader();
-            string documentText = fileReaderPointer.ReadFile(filePath);
-            return fileReaderPointer.SplitLine(documentText);
+            string documentText = fileReaderPointer.ReadFile(filePath).ToLower();
+            string fixedDocument = fileReaderPointer.RemoveSymbols(documentText);
+            return fileReaderPointer.SplitLine(fixedDocument);
         }
     }
 }
