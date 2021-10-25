@@ -43,6 +43,8 @@
 
         /// <summary>
         /// Inserts a new node if the node is not null recursively, if the node is null a new node will be created
+        /// Time complexity O(1) + O(1) + O(log n)
+        /// Asymptotisk analys O(log n)
         /// </summary>
         /// <param name="value">repeats</param>
         /// <param name="searchWord">search word</param>

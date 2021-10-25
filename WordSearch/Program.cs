@@ -14,5 +14,6 @@ namespace WordSearch
             MenuHandler MenuPointer = new MenuHandler();
             MenuPointer.Menu();
         }
+
     }
 }

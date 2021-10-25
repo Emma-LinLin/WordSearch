@@ -33,10 +33,7 @@
 
             string[] wordCollection = fileText.Split(' ');
 
-            foreach (var sub in wordCollection)
-            {
-                wordList.Add(sub);
-            }
+            wordList.AddRange(wordCollection);
 
             return wordList;
         }

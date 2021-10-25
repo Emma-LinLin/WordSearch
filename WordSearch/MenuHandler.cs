@@ -21,7 +21,6 @@
         /// Global variables containing lists and paths
         /// </summary>
         private List<string> cowList = default;
-
         private List<string> chickenList = default;
         private List<string> sheepList = default;
         private BinaryTree binaryTree = new BinaryTree();
@@ -107,15 +106,17 @@
                         }
                         resultContPointer.ClearList();
                         Console.WriteLine("The output was saved");
-                        Thread.Sleep(500);
                     }
                 }
             }
+            Thread.Sleep(650);
             Console.Clear();
         }
 
         /// <summary>
         /// Check how many times the word searched for occures inside document.
+        /// Time complexity O(1) + O(n + 2) + O(1) + O(1)= O(n + 5)
+        /// Asymptotisk analys = O(n)
         /// </summary>
         /// <param name="userInput">User input</param>
         /// <param name="document">Name of file</param>
@@ -137,6 +138,8 @@
 
         /// <summary>
         /// Check if word exists in one or more of the text files.
+        /// Time Complexity O(1) + O(1) + O(N^2 + 7) + O(1) + O(3) + O(1) = O(N^2 + 14)
+        /// Asymptotisk analys = O(N^2)
         /// </summary>
         /// <param name="userInput">User input</param>
         public bool ListCheck(string userInput)
@@ -175,7 +178,7 @@
 
             if (counter == 0)
             {
-                Console.WriteLine($"No match dound for {userInput} inside the files\n");
+                Console.WriteLine($"No match found for \"{userInput}\" inside the files\n");
                 return false;
             }
             return true;
