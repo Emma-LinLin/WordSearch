@@ -8,7 +8,7 @@
     /// <summary>
     /// Class responsible for adding search results to temporary list, and also removing results when not needed
     /// </summary>
-    internal class ResultController
+    internal class SearchResultController
     {
         private List<SearchResult> ListOfSearchResults = new List<SearchResult>();
 

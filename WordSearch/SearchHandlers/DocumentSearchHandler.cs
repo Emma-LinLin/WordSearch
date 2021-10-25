@@ -8,7 +8,7 @@
     /// <summary>
     /// Class for handeling requests from user
     /// </summary>
-    internal class SearchHandler
+    internal class DocumentSearchHandler
     {
         /// <summary>
         /// Sorts incoming list in alphabetical order
@@ -23,7 +23,7 @@
         }
 
         /// <summary>
-        /// Prints the number of words chosed by the user from the relevant list containing txt document 
+        /// Prints the number of words chosed by the user from the relevant list containing txt document
         /// </summary>
         /// <param name="userInput">number of words</param>
         /// <param name="sortedList">list sorted in alpabethical order</param>

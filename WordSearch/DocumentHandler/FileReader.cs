@@ -4,6 +4,7 @@
     using System.IO;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     /// <summary>
     /// Takes care of reading and sorting content of files
@@ -35,6 +36,14 @@
 
             wordList.AddRange(wordCollection);
 
+            foreach (var item in wordList.ToList())
+            {
+                if (item == "")
+                {
+                    wordList.Remove(item);
+                }
+            }
+
             return wordList;
         }
 
@@ -49,7 +58,7 @@
 
             for (int i = 0; i < wordArr.Length; i++)
             {
-                if (Char.IsLetterOrDigit(wordArr[i]))
+                if (Char.IsLetter(wordArr[i]))
                 {
                     continue;
                 }
