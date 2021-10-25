@@ -36,11 +36,11 @@
 
             wordList.AddRange(wordCollection);
 
-            foreach (var item in wordList.ToList())
+            foreach (var word in wordList.ToList())
             {
-                if (item == "")
+                if (word == "")
                 {
-                    wordList.Remove(item);
+                    wordList.Remove(word);
                 }
             }
 
