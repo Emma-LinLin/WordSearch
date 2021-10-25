@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using WordSearch.Seeder;
-
-namespace WordSearch
+﻿namespace WordSearch
 {
     internal class Program
     {
@@ -14,6 +10,5 @@ namespace WordSearch
             MenuHandler MenuPointer = new MenuHandler();
             MenuPointer.Menu();
         }
-
     }
 }

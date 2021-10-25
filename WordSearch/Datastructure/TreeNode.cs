@@ -1,8 +1,6 @@
 ﻿namespace WordSearch.Datastructure
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// Node class responsible for insert and print data structure

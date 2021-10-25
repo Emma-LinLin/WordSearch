@@ -1,9 +1,5 @@
 ﻿namespace WordSearch.Datastructure
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     //Binary tree class responsible for inserting root and forwards printing tree function
     internal class BinaryTree
     {
