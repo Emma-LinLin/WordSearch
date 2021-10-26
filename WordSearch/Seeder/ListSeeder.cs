@@ -9,6 +9,10 @@
     /// </summary>
     internal class ListSeeder
     {
+        public List<string> cowList = default;
+        public List<string> chickenList = default;
+        public List<string> sheepList = default;
+
         /// <summary>
         /// Forwards the response of filepath and fetches the sorted list from txt file
         /// </summary>
@@ -30,6 +34,16 @@
             string path = $"{dir}{fileName}";
 
             return path;
+        }
+
+        /// <summary>
+        /// Calls upon seeder forwarding the paths wanted.
+        /// </summary>
+        public void Seed()
+        {
+            cowList = Seeder(@"\Cow.txt");
+            chickenList = Seeder(@"\Chicken.txt");
+            sheepList = Seeder(@"\Sheep.txt");
         }
 
         /// <summary>

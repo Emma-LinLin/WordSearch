@@ -43,6 +43,7 @@
         /// Inserts a new node if the node is not null recursively, if the node is null a new node will be created
         /// Time complexity O(1) + O(1) + O(log n)
         /// Asymptotisk analys O(log n)
+        /// Recursion is used in order to break down the problem and get further and further for each iteration towards the result sought after.
         /// </summary>
         /// <param name="value">repeats</param>
         /// <param name="searchWord">search word</param>

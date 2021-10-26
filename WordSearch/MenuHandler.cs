@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using WordSearch.Datastructure;
     using WordSearch.DocumentHandler;
@@ -15,28 +16,22 @@
     internal class MenuHandler
     {
         /// <summary>
-        /// Global variables containing lists and paths
+        // Global variables containing lists and paths.
         /// </summary>
-        private List<string> cowList = default;
-
-        private List<string> chickenList = default;
-        private List<string> sheepList = default;
         private BinaryTree binaryTree = new BinaryTree();
-        private string _cowPath = @"\Cow.txt";
-        private string _chickenPath = @"\Chicken.txt";
-        private string _sheepPath = @"\Sheep.txt";
+
         private InputHandler helperPointer = new InputHandler();
         private DocumentSearchHandler searchPointer = new DocumentSearchHandler();
+        private ListSeeder seederPointer = new ListSeeder();
         private SearchResultController resultContPointer = new SearchResultController();
 
         /// <summary>
-        /// Main menu presented to user when program is started
+        /// Main menu presented to user when program is started.
         /// </summary>
         public void Menu()
         {
-            Seed();
+            seederPointer.Seed();
             Console.WriteLine("Welcome to WordSearch, the word search engine!\n");
-
             while (true)
             {
                 Console.WriteLine(@"What would you like to do?
@@ -122,9 +117,8 @@
 
         /// <summary>
         /// Check how many times the word searched for occures inside document.
-        /// Time complexity O(1) + O(n + 2) + O(1) + O(1)= O(n + 5)
-        /// Time complecity: O(1) + O(n) + O(1)
-        /// Asymptotisk analys = O(n)
+        /// Time complexity: O(1) + O(n + 2) + (O(1)) + O(1) = O(n + 4) + (O(1))
+        /// Asymptotic analysis: O(n)
         /// </summary>
         /// <param name="userInput">User input</param>
         /// <param name="document">Name of file</param>
@@ -147,20 +141,17 @@
 
         /// <summary>
         /// Check if word exists in one or more of the text files.
-        /// Time Complexity : O(N + 7)
+        /// Time Complexity : O(1) + O(1) + O(n + 2 + (O())) O(N + 7)
         /// With .contain-method included: (O(N^2 + 7))
-        /// Asymptotisk analys = O(N^2)
+        /// Asymptotic analysis: O(N^2)
         /// </summary>
         /// <param name="userInput">User input</param>
         public bool ListCheck(string userInput)
         {
             bool success = false;
-            var listOfDocuments = new List<List<string>>()
-            {
-                cowList,
-                chickenList,
-                sheepList,
-            };
+
+            var listOfDocuments = new List<List<string>>() { seederPointer.cowList, seederPointer.chickenList, seederPointer.sheepList };
+
             foreach (var list in listOfDocuments)
             {
                 if (list.Contains(userInput))
@@ -186,17 +177,17 @@
         {
             int counter = default;
             string document = default;
-            if (list == cowList)
+            if (list == seederPointer.cowList)
             {
                 document = "Cow.txt";
                 counter += WordCount(userInput, document, list);
             }
-            if (list == chickenList)
+            if (list == seederPointer.chickenList)
             {
                 document = "Chicken.txt";
                 counter += WordCount(userInput, document, list);
             }
-            if (list == sheepList)
+            if (list == seederPointer.sheepList)
             {
                 document = "Sheep.txt";
                 counter += WordCount(userInput, document, list);
@@ -222,15 +213,15 @@
             switch (userInput)
             {
                 case 1:
-                    sortedList = searchPointer.SortList(cowList);
+                    sortedList = searchPointer.SortList(seederPointer.cowList);
                     break;
 
                 case 2:
-                    sortedList = searchPointer.SortList(chickenList);
+                    sortedList = searchPointer.SortList(seederPointer.chickenList);
                     break;
 
                 case 3:
-                    sortedList = searchPointer.SortList(sheepList);
+                    sortedList = searchPointer.SortList(seederPointer.sheepList);
                     break;
 
                 default:
@@ -249,17 +240,6 @@
         public void PrintStructure()
         {
             binaryTree.PrintTree();
-        }
-
-        /// <summary>
-        /// Calls upon seeder forwarding the paths wanted.
-        /// </summary>
-        private void Seed()
-        {
-            ListSeeder seederPointer = new ListSeeder();
-            cowList = seederPointer.Seeder(_cowPath);
-            chickenList = seederPointer.Seeder(_chickenPath);
-            sheepList = seederPointer.Seeder(_sheepPath);
         }
     }
 }
