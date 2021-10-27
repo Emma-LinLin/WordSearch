@@ -25,7 +25,8 @@
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Not a valid option with following error: {ex.Message}");
+                    Console.WriteLine($"Not a valid option with following error: {ex.Message}\nPlease try again!");
+                    Console.Write("\n>");
                 }
             }
         }

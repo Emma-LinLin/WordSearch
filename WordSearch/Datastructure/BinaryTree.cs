@@ -1,4 +1,6 @@
-﻿namespace WordSearch.Datastructure
+﻿using System;
+
+namespace WordSearch.Datastructure
 {
     //Binary tree class responsible for inserting root and forwards printing tree function
     internal class BinaryTree
@@ -29,6 +31,10 @@
         /// </summary>
         public void PrintTree()
         {
+            if (root == null)
+            {
+                Console.WriteLine("The data structure is currently empty");
+            }
             if (root != null)
             {
                 root.PrintTree();

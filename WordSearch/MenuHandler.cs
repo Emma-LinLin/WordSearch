@@ -38,7 +38,8 @@
                 Console.WriteLine("1. Search word");
                 Console.WriteLine("2. Order document and search for x number of words");
                 Console.WriteLine("3. Print datastructure");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Exit\n");
+                Console.Write(">");
                 int userInput = helperPointer.ParseUserInput();
                 switch (userInput)
                 {
@@ -144,9 +145,9 @@
 
         /// <summary>
         /// Check if word exists in one or more of the text files.
-        /// Time Complexity : O(1) + O(1) + O(n + 2 + (O())) O(N + 7)
-        /// With .contain-method included: (O(N^2 + 7))
-        /// Asymptotic analysis: O(N^2)
+        /// Time Complexity : O(1) + O(1) + O(n) + O(1) + (O(n)) + O(1) + O(1) = O(n^2 + 5)
+        /// Asymptotic analysis with .contain-method included: O(n^3)
+        /// Asymptotic analysis: O(n^2)
         /// </summary>
         /// <param name="userInput">User input</param>
         public bool ListCheck(string userInput)
@@ -172,10 +173,13 @@
 
         /// <summary>
         /// Checks for how many times specific word occures in list from file.
+        /// Time Complexity best case: O(1) + O(1) + O(1 + (O(1) + (O(n))) + O(1)) = O(n + 6)
+        /// Time Complexity worst case: O(1) + O(1) + O(3) + O(3) + O(3) + (O(3n)) + O(1) = O(3n + 12)
+        /// Asymptotic analysis: O(n)
         /// </summary>
         /// <param name="userInput">User input</param>
         /// <param name="list"></param>
-        /// <returns>Counter</returns>
+        /// <returns>Boolean true if word exists, false if not</returns>
         private bool DoesWordExist(string userInput, List<string> list)
         {
             int counter = default;
@@ -242,7 +246,6 @@
         /// </summary>
         public void PrintStructure()
         {
-            Console.Clear();
             binaryTree.PrintTree();
         }
     }

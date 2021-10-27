@@ -27,9 +27,16 @@
         /// <param name="sortedList">list sorted in alpabethical order</param>
         public void PrintNumberOfWords(int userInput, List<string> sortedList)
         {
-            for (int i = 0; i < userInput; i++)
+            if (userInput > sortedList.Count)
             {
-                Console.WriteLine(sortedList[i]);
+                Console.WriteLine("\nToo many words for this list! Chosen document does not contain that many words.");
+            }
+            else
+            {
+                for (int i = 0; i < userInput; i++)
+                {
+                    Console.WriteLine(sortedList[i]);
+                }
             }
         }
     }
