@@ -31,15 +31,14 @@
         public void Menu()
         {
             seederPointer.Seed();
-            Console.WriteLine("Welcome to WordSearch, the word search engine!\n");
+            Console.WriteLine("Welcome to WordSearch, the word search engine!");
             while (true)
             {
-                Console.WriteLine(@"What would you like to do?
-1. Search word
-2. Order document and search for x number of words
-3. Print datastructure
-4. Exit");
-                Console.Write("\n> ");
+                Console.WriteLine("\nWhat would you like to do?");
+                Console.WriteLine("1. Search word");
+                Console.WriteLine("2. Order document and search for x number of words");
+                Console.WriteLine("3. Print datastructure");
+                Console.WriteLine("4. Exit");
                 int userInput = helperPointer.ParseUserInput();
                 switch (userInput)
                 {
@@ -111,6 +110,10 @@
                     binaryTree.Insert(list.Repeats, list.SearchWord, list.FileName);
                 }
                 Console.WriteLine("The output was saved");
+            }
+            else if (userChoice != "n")
+            {
+                Console.WriteLine("Invalid input");
             }
             resultContPointer.ClearList();
         }
@@ -239,6 +242,7 @@
         /// </summary>
         public void PrintStructure()
         {
+            Console.Clear();
             binaryTree.PrintTree();
         }
     }

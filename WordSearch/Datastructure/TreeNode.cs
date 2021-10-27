@@ -75,7 +75,7 @@
         }
 
         /// <summary>
-        /// Prints the whole data structure recursively
+        /// Prints the whole data structure recursively in pre order traversal order.
         /// </summary>
         public void PrintTree()
         {
