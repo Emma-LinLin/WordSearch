@@ -121,7 +121,7 @@
 
         /// <summary>
         /// Check how many times the word searched for occures inside document.
-        /// Time complexity: O(1) + O(n + 2) + (O(1)) + O(1) = O(n + 4) + (O(1))
+        /// Time complexity: O(1) + O(n) + (O(1)) + O(1) = O(n + 2) + (O(1))
         /// Asymptotic analysis: O(n)
         /// </summary>
         /// <param name="userInput">User input</param>
@@ -145,7 +145,7 @@
 
         /// <summary>
         /// Check if word exists in one or more of the text files.
-        /// Time Complexity : O(1) + O(1) + O(n) + O(1) + (O(n)) + O(1) + O(1) = O(n^2 + 5)
+        /// Time Complexity : O(1) + O(1) + O(n) + (O(n)) + O(1) + O(1) = O(n^2 + 4)
         /// Asymptotic analysis with .contain-method included: O(n^3)
         /// Asymptotic analysis: O(n^2)
         /// </summary>
@@ -173,8 +173,7 @@
 
         /// <summary>
         /// Checks for how many times specific word occures in list from file.
-        /// Time Complexity best case: O(1) + O(1) + O(1 + (O(1) + (O(n))) + O(1)) = O(n + 6)
-        /// Time Complexity worst case: O(1) + O(1) + O(3) + O(3) + O(3) + (O(3n)) + O(1) = O(3n + 12)
+        /// Time Complexity worst case: O(1) + O(1) + O(3) + O(3) + O(3) + (O(3n)) + O(1) + O(1) = O(3n + 13)
         /// Asymptotic analysis: O(n)
         /// </summary>
         /// <param name="userInput">User input</param>

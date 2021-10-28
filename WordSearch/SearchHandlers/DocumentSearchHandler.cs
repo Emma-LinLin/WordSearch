@@ -31,6 +31,10 @@
             {
                 Console.WriteLine("\nToo many words for this list! Chosen document does not contain that many words.");
             }
+            else if(userInput <= 0)
+            {
+                Console.WriteLine("You need to enter a positive number");
+            }
             else
             {
                 for (int i = 0; i < userInput; i++)

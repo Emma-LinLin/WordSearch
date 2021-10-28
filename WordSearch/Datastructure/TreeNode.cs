@@ -41,7 +41,7 @@
 
         /// <summary>
         /// Inserts a new node if the node is not null recursively, if the node is null a new node will be created
-        /// Time complexity O(1) + O(1) + O(log n)
+        /// Time complexity O(1) + O(1) + O(log n) = O(log n + 2)
         /// Asymptotisk analys O(log n)
         /// Recursion is used in order to break down the problem and get further and further for each iteration towards the result sought after.
         /// </summary>
